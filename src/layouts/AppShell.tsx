@@ -9,6 +9,8 @@ export default function AppShell() {
     const [open, setOpen] = useState(false);
     const location = useLocation();
 
+    // array of pages we have
+    // label is the name we want within the drawer and to is the link to the actual page
     const items = [
         { label: "Home", to: "/dashboard" },
         { label: "Post", to: "/posts" },
@@ -16,10 +18,21 @@ export default function AppShell() {
         { label: "Profile", to: "/profile" },
     ];
 
+
+    const pageTitles: Record<string, string> = {
+        "/dashboard": "Dashboard",
+        "/posts": "All Posts",
+        "/ask": "Ask a Question",
+        "/profile": "Your Profile",
+    };
+
+    const title = pageTitles[location.pathname] || "Student Tutor App";
+
     return (
         <div className="min-h-screen flex">
 
-            <aside className="fixed left-0 top-0 h-screen w-12 border-r bg-background/90 backdrop-blur-sm flex flex-col items-center">
+            {/* aside in charge of side menu button when pressed drawer appears */}
+            <aside className="fixed left-1 top-1 h-screen w-13 border-r backdrop-blur-sm flex flex-col items-center">
                 {/* top-left menu button */}
                 <Button
                     variant="ghost"
@@ -32,26 +45,31 @@ export default function AppShell() {
                 </Button>
                 {/* you can add more rail icons stacked vertically here */}
             </aside>
+
+            {/* Header top bar, currently only shows pages title */}
             <div className="ml-12 flex-1 flex flex-col">
-                {/* optional top bar for page title, etc. */}
                 <header className="h-14 border-b flex items-center px-4">
-                    <div className="font-medium">Student Tutor App</div>
+                    <div className="font-medium">{title}</div>
                 </header>
 
-                <main className="flex-1 p-4">
+                <main className="flex-2 p-5">
                     <Outlet />
                 </main>
             </div>
 
-            {/* DRAWER CONTENT */}
+            {/* DRAWER CONTENT handles the mapping of pages I have when the drawer is opened*/}
             <Drawer open={open} onClose={() => setOpen(false)}>
-                <div style={{ width: 260 }}>
-                    <div className="flex items-center justify-between px-3 py-3 border-b">
+                <div style={{ width: 260 }}> {/* How far out the drawer goes in pixels*/}
+                    <div className="flex items-center justify-between px-3 py-3 border-b"> {/* in charge of the boarder line and handles the title and X button*/}
                         <span className="font-semibold">Navigation</span>
                         <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close menu">
                             <X className="h-5 w-5 text-white" />
                         </Button>
                     </div>
+
+                    {/* handles the list of pages we have will map them out in order and when pressed will link us to the respective page*/}
+                    {/* TODO: figure out a way to change the icon depending on what the link is ex: if its ask/request maybe have a question mark icon*/}
+                    {/* currently all items have the mail icon*/}
                     <List>
                         {items.map((it) => (
                             <ListItemButton
