@@ -3,35 +3,10 @@ import {NavLink, Outlet, useNavigate} from "react-router-dom";
 import {MailIcon, Menu} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 
-import {ListItem, List, Drawer, ListItemText, ListItemIcon, ListItemButton} from "@mui/material";
+import { List, Drawer, ListItemText, ListItemIcon, ListItemButton} from "@mui/material";
 
-// function NavItem({
-//                      to,
-//                      label,
-//                      onClick,
-//                  }: {
-//     to: string,
-//     label: string,
-//     onClick?: () => void,
-// }) {
-//     return (
-//         <NavLink
-//             to={to}
-//             onClick={onClick}
-//             className={({isActive}) =>
-//                 [
-//                     "flex items-center gap-2 rounded-lg px-3 py-2 text-sm",
-//                     "transition-colors hover:bg-muted",
-//                     isActive ? "bg-muted font-medium" : "text-muted-foreground",
-//                 ].join(" ")
-//             }
-//         >
-//             {label}
-//         </NavLink>
-//     );
-// }
 
-export default function MainLayout() {
+export default function Dashboard() {
 
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
