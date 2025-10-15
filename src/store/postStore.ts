@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import type {User} from "./userStore.ts";
 
 export type PostType = 'QUESTION' | 'LEARN_REQUEST' | 'DISCUSSION';
 export type PostStatus = 'OPEN' | 'RESOLVED' | 'CLOSED';
@@ -7,20 +8,20 @@ export interface Post {
     id: string;
     title: string;
     content: string;
-    authorName: string;
+    user: User;
     postType: PostType;
     status: PostStatus;
     createdAt: string;
 }
 
-interface PostStore {
+interface postStore {
     posts: Post[];
     addPost: (newPost: Post) => void;
     deletePost: (id: string) => void;
     editPost: (id: string, updatedPost: Post) => void;
 }
 
-export const usePostStore = create<PostStore>((set) => ({
+export const usePostStore = create<postStore>((set) => ({
     posts: [],
     addPost: (post) => set((state) => ({
         posts: [...state.posts, post]

@@ -5,6 +5,7 @@ import Posts from "@/pages/Posts.tsx";
 import Profile from "@/pages/Profile.tsx";
 import Dashboard from "@/pages/Dashboard.tsx";
 import AppShell from "@/layouts/AppShell.tsx";
+import Users from "@/pages/Users.tsx";
 
 // app routes page, we will input new app pages here and link them below within router
 // syntax path: "/path" or "/path1/path2", followed by element: <Page/>, element will hold the actual page we created
@@ -18,6 +19,9 @@ const router = createBrowserRouter([
             { path: "ask", element: <Ask /> },      // "/ask"
             { path: "profile", element: <Profile /> },
             { path: "dashboard", element: <Dashboard /> },
+            { path: "users", element: <Users/>},
+            // EX when user clicks on another users profile
+            //{ path: "users/id", element: <UsersProfile/>}
         ],
     },
 ]);

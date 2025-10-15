@@ -16,6 +16,7 @@ export default function AppShell() {
         { label: "Post", to: "/posts" },
         { label: "Ask/Request", to: "/ask" },
         { label: "Profile", to: "/profile" },
+        { label: "Users", to: "/users" },
     ];
 
 
@@ -24,6 +25,7 @@ export default function AppShell() {
         "/posts": "All Posts",
         "/ask": "Ask a Question",
         "/profile": "Your Profile",
+        "/users": "Users",
     };
 
     const title = pageTitles[location.pathname] || "Student Tutor App";
