@@ -9,7 +9,7 @@ export default function PostDetail() {
         <article>
             <h2>{post.title}</h2>
             <div style={{ fontSize: 12, opacity: 0.8 }}>
-                by {post.authorName} • {new Date(post.createdAt).toLocaleString()} • {post.postType}
+                by {post.user.name.firstName} {post.user.name.lastName} • {new Date(post.createdAt).toLocaleString()} • {post.postType}
             </div>
             <p style={{ marginTop: 12 }}>{post.content}</p>
             {/* TODO: answers, comments, vote UI */}

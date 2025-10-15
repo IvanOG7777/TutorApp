@@ -29,7 +29,7 @@ export interface User {
     status: status;
 }
 
-const mockUsers: User[] = [
+export const mockUsers: User[] = [
     {
         id: '1',
         name: { firstName: "Ivan", lastName: "Argueta" },
